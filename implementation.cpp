@@ -180,36 +180,12 @@ string INTAL::division(string s1, long long int n){
     return answer;
 }
 string INTAL::factorial(int n){
-    int i=2;
-    int j=0;
-    int len=1;
-    int A[100000]={0};
-    A[0]=1;
-    int num=0;
-    while(i<=n){
-        j=0;
-        num=0;
-        while(j<len){
-            A[j]*=i;
-            A[j]+=num;
-            num=A[j]/10;
-            A[j]%=10;
-            j++;
-        }
-        while(num!=0){
-            A[len]=num%10;
-            num/=10;
-            len++;
-        }
-        i++;
+    string s;
+    INTAL A("1");
+    for(int i=1; i<=n; i++){
+        A = A*i;
     }
-    len--;
-    string answer = "";
-    while(len>=0){
-        answer+=(char)(A[len]  + '0');
-        len--;
-    }
-    return answer;
+    return A.str;
 }
 
 //default constructor
